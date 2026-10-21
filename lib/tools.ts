@@ -474,6 +474,59 @@ export const TOOLS: Tool[] = [
     },
     sitemapPriority: 0.9,
   },
+  {
+    slug: "number-base-converter",
+    path: "/number-base-converter",
+    title: "Number Base Converter",
+    tagline: "Numbers",
+    cardDescription:
+      "Convert integers between binary, octal, decimal, hex and any base from 2 to 36, with two's complement for 8, 16, 32 and 64 bits.",
+    features: ["Binary", "Octal", "Decimal", "Hex", "Two's complement"],
+    accentVar: "--violet",
+    accentHex: "#9E7BFF",
+    metaTitle: "Number Base Converter - Binary, Hex, Octal, Decimal",
+    metaDescription:
+      "Number base converter for binary, octal, decimal, hex and any base from 2 to 36, with two's complement up to 64 bits. Exact for big numbers, in your browser.",
+    ogTitle: "Number Base Converter - CODERCOPS Tools",
+    ogDescription:
+      "Convert integers between binary, octal, decimal, hex and any base up to 36, with two's complement, in your browser.",
+    heroBreadcrumb: "Binary · Octal · Decimal · Hex",
+    heroHeading: "Number Base Converter",
+    heroDim: "",
+    heroDescription:
+      "Paste an integer in any base from 2 to 36 and read it in binary, octal, decimal and hex at once, plus its two's complement. Big numbers stay exact.",
+    jsonLdName: "Number Base Converter",
+    jsonLdDescription:
+      "Free online converter for integers between bases 2 to 36, including binary, octal, decimal and hex, with two's complement for 8, 16, 32 and 64 bits.",
+    applicationCategory: "DeveloperApplication",
+    faqs: [
+      {
+        q: "Which prefixes and separators does it understand?",
+        a: "With the input base on auto-detect, 0b means binary, 0o octal and 0x hex, and anything else is read as decimal. A leading - or + comes before the prefix, as in -0b1010. Underscores and spaces between digits are ignored, so 1111_1111 and 1 000 000 both work.",
+      },
+      {
+        q: "Does it handle numbers bigger than 2^53?",
+        a: "Yes. Every conversion uses JavaScript BigInt, so there is no rounding at any size. 18446744073709551616 (2^64) comes out as exactly 10000000000000000 in hex.",
+      },
+      {
+        q: "How does two's complement work here?",
+        a: "Pick a width of 8, 16, 32 or 64 bits. A negative number is written as 2^width plus the value, so -1 in 8 bits is 11111111. If the number doesn't fit in a signed integer of that width, for example 128 in 8 bits, the tool says so instead of wrapping it around.",
+      },
+      {
+        q: "Is my input sent anywhere?",
+        a: "No. The conversion runs entirely in your browser. Nothing you type leaves the page.",
+      },
+    ],
+    cta: {
+      headline: "Working close to the bits?",
+      sub: "CODERCOPS builds production APIs, data pipelines, and developer tooling for startups and enterprises.",
+      primaryLabel: "See our projects",
+      primaryHref: CTA_PROJECTS,
+      secondaryLabel: "Get a free quote",
+      secondaryHref: CTA_CONTACT,
+    },
+    sitemapPriority: 0.9,
+  },
 ];
 
 export function getTool(slug: string): Tool | undefined {
