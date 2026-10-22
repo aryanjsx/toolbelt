@@ -115,11 +115,18 @@ export function VerifyPanel({ token, alg }: VerifyPanelProps) {
       </div>
       <div className="p-4">
         <div className="flex items-center gap-2 mb-3">
-          <div className="segmented">
-            <button data-active={mode === "secret"} onClick={() => setMode("secret")}>
+          <div className="segmented" role="group" aria-label="Key source">
+            <button
+              type="button"
+              aria-pressed={mode === "secret"}
+              data-active={mode === "secret"}
+              onClick={() => setMode("secret")}
+            >
               {isHmac ? "Secret" : "PEM / JWK"}
             </button>
             <button
+              type="button"
+              aria-pressed={mode === "jwks"}
               data-active={mode === "jwks"}
               onClick={() => setMode("jwks")}
               disabled={isHmac}

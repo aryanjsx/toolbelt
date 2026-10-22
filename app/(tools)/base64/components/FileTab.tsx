@@ -186,11 +186,11 @@ export function FileTab() {
               Base64 · {formatBytes(new Blob([displayed]).size)}
             </span>
             <div className="flex items-center gap-2">
-              <div className="segmented">
-                <button data-active={chunked} onClick={() => setChunked(true)}>
+              <div className="segmented" role="group" aria-label="Line length">
+                <button type="button" aria-pressed={chunked} data-active={chunked} onClick={() => setChunked(true)}>
                   76-char lines
                 </button>
-                <button data-active={!chunked} onClick={() => setChunked(false)}>
+                <button type="button" aria-pressed={!chunked} data-active={!chunked} onClick={() => setChunked(false)}>
                   Single line
                 </button>
               </div>

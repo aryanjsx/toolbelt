@@ -81,10 +81,10 @@ export function Toolbar({
       <span className="mx-1 h-5 w-px bg-[var(--hairline)]" />
 
       <div className="segmented" role="group" aria-label="Indent size">
-        <button data-active={indent === 2} onClick={() => onIndentChange(2)}>
+        <button type="button" aria-pressed={indent === 2} data-active={indent === 2} onClick={() => onIndentChange(2)}>
           2 sp
         </button>
-        <button data-active={indent === 4} onClick={() => onIndentChange(4)}>
+        <button type="button" aria-pressed={indent === 4} data-active={indent === 4} onClick={() => onIndentChange(4)}>
           4 sp
         </button>
       </div>

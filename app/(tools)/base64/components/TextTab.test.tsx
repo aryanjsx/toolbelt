@@ -34,3 +34,41 @@ describe("TextTab paste", () => {
     expect(screen.getByText("Decoded text")).toBeInTheDocument();
   });
 });
+
+describe("TextTab switches", () => {
+  afterEach(cleanup);
+
+  const renderTab = () =>
+    render(
+      <ToastProvider>
+        <TextTab />
+      </ToastProvider>,
+    );
+
+  it("names the direction switch and presses only the selected direction", () => {
+    renderTab();
+    expect(screen.getByRole("group", { name: "Direction" })).toBeInTheDocument();
+    const encode = screen.getByRole("button", { name: "Text → Base64" });
+    const decode = screen.getByRole("button", { name: "Base64 → Text" });
+    expect(encode).toHaveAttribute("type", "button");
+    expect(encode).toHaveAttribute("aria-pressed", "true");
+    expect(decode).toHaveAttribute("aria-pressed", "false");
+    fireEvent.click(decode);
+    expect(encode).toHaveAttribute("aria-pressed", "false");
+    expect(decode).toHaveAttribute("aria-pressed", "true");
+  });
+
+  it("names the variant switch and presses only the selected variant", () => {
+    renderTab();
+    expect(screen.getByRole("group", { name: "Base64 variant" })).toBeInTheDocument();
+    const standard = screen.getByRole("button", { name: "Standard" });
+    const urlSafe = screen.getByRole("button", { name: "URL-safe" });
+    expect(standard).toHaveAttribute("aria-pressed", "true");
+    expect(urlSafe).toHaveAttribute("aria-pressed", "false");
+    fireEvent.click(urlSafe);
+    expect(standard).toHaveAttribute("aria-pressed", "false");
+    expect(urlSafe).toHaveAttribute("aria-pressed", "true");
+    // The styling hook stays in step with the state.
+    expect(urlSafe).toHaveAttribute("data-active", "true");
+  });
+});

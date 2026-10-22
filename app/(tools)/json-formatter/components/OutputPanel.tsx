@@ -77,6 +77,7 @@ export function OutputPanel({ output, theme = "dark" }: OutputPanelProps) {
           <div className="segmented" role="group" aria-label="View mode">
             <button
               type="button"
+              aria-pressed={mode === "code"}
               data-active={mode === "code"}
               onClick={() => setMode("code")}
               title="Code view"
@@ -86,6 +87,7 @@ export function OutputPanel({ output, theme = "dark" }: OutputPanelProps) {
             </button>
             <button
               type="button"
+              aria-pressed={mode === "tree"}
               data-active={mode === "tree"}
               onClick={() => setMode("tree")}
               title="Tree view"

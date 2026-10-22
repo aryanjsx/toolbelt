@@ -157,19 +157,29 @@ export function TextTab() {
       )}
 
       <div className="flex flex-wrap items-center gap-3">
-        <div className="segmented">
-          <button data-active={direction === "encode"} onClick={() => setDirection("encode")}>
+        <div className="segmented" role="group" aria-label="Direction">
+          <button
+            type="button"
+            aria-pressed={direction === "encode"}
+            data-active={direction === "encode"}
+            onClick={() => setDirection("encode")}
+          >
             Text → Base64
           </button>
-          <button data-active={direction === "decode"} onClick={() => setDirection("decode")}>
+          <button
+            type="button"
+            aria-pressed={direction === "decode"}
+            data-active={direction === "decode"}
+            onClick={() => setDirection("decode")}
+          >
             Base64 → Text
           </button>
         </div>
-        <div className="segmented" aria-label="Base64 variant">
-          <button data-active={!urlSafe} onClick={() => setUrlSafe(false)}>
+        <div className="segmented" role="group" aria-label="Base64 variant">
+          <button type="button" aria-pressed={!urlSafe} data-active={!urlSafe} onClick={() => setUrlSafe(false)}>
             Standard
           </button>
-          <button data-active={urlSafe} onClick={() => setUrlSafe(true)}>
+          <button type="button" aria-pressed={urlSafe} data-active={urlSafe} onClick={() => setUrlSafe(true)}>
             URL-safe
           </button>
         </div>
